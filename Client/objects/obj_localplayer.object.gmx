@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>maxhp = 10;
+            <string>state = 0;
+facing = 0;
+maxhp = 10;
 hp = maxhp;
 maxmp = 10;
 mp = maxmp;
@@ -79,35 +81,71 @@ mp = maxmp;
             <string>//some basic player movement
 depth = -y;
 
+
 var xx, yy, d;
-
-if (keyboard_check(vk_left) &amp;&amp; place_free(x - 9, y)) {
+// movement
+if (keyboard_check(vk_left) &amp;&amp; place_free(x - 9, y)) &amp;&amp; sprite_index = spr_heroleft {
 x -= 3;
-sprite_index = spr_heroleft;
+
 }
 
-if (keyboard_check(vk_right) &amp;&amp; place_free(x + 9, y)) {
+if (keyboard_check(vk_right) &amp;&amp; place_free(x + 9, y)) &amp;&amp; sprite_index = spr_heroright {
 x += 3;
-sprite_index = spr_heroright;
+
 }
 
-if (keyboard_check(vk_up) &amp;&amp; place_free(x , y - 10)) {
+if (keyboard_check(vk_up) &amp;&amp; place_free(x , y - 10)) &amp;&amp; sprite_index = spr_heroback {
 y -= 3;
-sprite_index = spr_heroback;
+
 }
 
-if (keyboard_check(vk_down) &amp;&amp; place_free(x, y +10)) {
+if (keyboard_check(vk_down) &amp;&amp; place_free(x, y +10)) &amp;&amp; sprite_index = spr_herofront {
 y += 3;
-sprite_index = spr_herofront;
+
+}
+
+//sprite control
+
+//downward movment
+if (keyboard_check_pressed(vk_down)) 
+{sprite_index = spr_herofront;
+ image_speed = .2;
+ image_index = -1;
+ facing = 3;
+ 
+}
+
+// upward movment
+if (keyboard_check_pressed(vk_up)) 
+{sprite_index = spr_heroback;
+ image_speed = .2;
+ image_index = -1;
+ facing = 1;
+ 
+}
+
+// left movment
+
+if (keyboard_check_pressed(vk_left)) 
+{sprite_index = spr_heroleft;
+ image_speed = .2;
+ image_index = -1;
+ facing = 2;
+ 
+}
+
+// right movment
+
+if (keyboard_check_pressed(vk_right)) 
+{sprite_index = spr_heroright;
+ image_speed = .2;
+ image_index = -1;
+ facing = 3;
+ 
 }
 
 
-if (keyboard_check_pressed(vk_numpad5)) &amp;&amp; (hp &gt; 0) {
-sprite_index = spr_herofront;
-    if (image_index = 6)
-        {sprite_index = spr_herofront;
-        }
-}
+
 
 
 if (hp &lt;= 0){

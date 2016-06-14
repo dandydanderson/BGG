@@ -15,9 +15,9 @@
     </sprites>
     <sprites name="players">
       <sprite>sprites\spr_herofront</sprite>
-      <sprite>sprites\spr_heroleft</sprite>
       <sprite>sprites\spr_heroright</sprite>
       <sprite>sprites\spr_heroback</sprite>
+      <sprite>sprites\spr_heroleft</sprite>
     </sprites>
     <sprites name="abilities">
       <sprite>sprites\spr_fireball</sprite>
