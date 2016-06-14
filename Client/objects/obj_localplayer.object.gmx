@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>state = 0;
+            <string>state = "idle";
 facing = 0;
 maxhp = 10;
 hp = maxhp;
@@ -86,24 +86,26 @@ var xx, yy, d;
 // movement
 if (keyboard_check(vk_left) &amp;&amp; place_free(x - 9, y)) &amp;&amp; sprite_index = spr_heroleft {
 x -= 3;
+state = "movement"
 
 }
 
 if (keyboard_check(vk_right) &amp;&amp; place_free(x + 9, y)) &amp;&amp; sprite_index = spr_heroright {
 x += 3;
-
+state = "movement"
 }
 
 if (keyboard_check(vk_up) &amp;&amp; place_free(x , y - 10)) &amp;&amp; sprite_index = spr_heroback {
 y -= 3;
-
+state = "movement"
 }
 
 if (keyboard_check(vk_down) &amp;&amp; place_free(x, y +10)) &amp;&amp; sprite_index = spr_herofront {
 y += 3;
-
+state = "movement"
 }
-
+if (x = xprevious &amp;&amp; y = yprevious) {state = "idle"}
+if (state = "idle") {image_index = 0;}
 //sprite control
 
 //downward movment
