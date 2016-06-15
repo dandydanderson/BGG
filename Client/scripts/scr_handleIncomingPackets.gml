@@ -92,11 +92,14 @@ switch(msgId)
         var pId = buffer_read(buffer, buffer_u32);
         var xx = buffer_read(buffer, buffer_f32);
         var yy = buffer_read(buffer, buffer_f32);
+<<<<<<< HEAD
         var sprNumber = buffer_read(buffer, buffer_u8);
         var imageIndex = buffer_read(buffer, buffer_u8);
        var abilCast = buffer_read(buffer, buffer_u8);
         var facing = buffer_read(buffer, buffer_u8);
         
+=======
+>>>>>>> parent of 15cf02c... Remote player player animation!
         
         with (obj_remoteplayer)
         {
@@ -104,43 +107,7 @@ switch(msgId)
             {
                 x = xx;
                 y = yy;
-                
-                switch (sprNumber)
-                {//movement
-                case 0:
-                    sprite_index = spr_heroright;
-                break;
-                
-                case 1:
-                    sprite_index = spr_heroback;
-                break;
-                
-                case 2:
-                    sprite_index = spr_heroleft;
-                break;
-                
-                case 3:
-                    sprite_index = spr_herofront;
-                break;
-                //casting
-                case 4:
-                    sprite_index = spr_castright;
-                break;
-                
-                case 5:
-                    sprite_index = spr_castup;
-                break;
-                
-                case 6:
-                    sprite_index = spr_castleft;
-                break;
-                
-                case 7:
-                    sprite_index = spr_castdown;
-                break;
             }
-            
-            image_index = imageIndex;
         }
         
          switch (facing)
@@ -182,6 +149,7 @@ switch(msgId)
            break;
            }
     break;
+<<<<<<< HEAD
     
     
 }
@@ -228,4 +196,6 @@ switch(msgId)
            }
         
     break;
+=======
+>>>>>>> parent of 15cf02c... Remote player player animation!
 }

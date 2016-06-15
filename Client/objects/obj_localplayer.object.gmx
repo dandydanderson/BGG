@@ -26,9 +26,6 @@
           <argument>
             <kind>1</kind>
             <string>state = "idle";
-strength = 10;
-intel = 10;
-dext = 10;
 facing = 0;
 maxhp = 10;
 hp = maxhp;
@@ -257,68 +254,20 @@ hp = 0;
 x = xprevious;
 y = yprevious;
 }
-
-
-//                   update sprNumber
-
-var sprNumber = 0
-
-switch (sprite_index)
-{  //movement sprites
-    case spr_heroright:
-    sprNumber = 0;
-    break;
-    
-    case spr_heroback:
-    sprNumber = 1;
-    break;
-    
-    case spr_heroleft:
-    sprNumber = 2;
-    break;
-    
-    case spr_herofront:
-    sprNumber = 3;
-    break;
-    
-    // casting sprites
-    
-    case spr_castright:
-    sprNumber = 4;
-    break;
-    
-    case spr_castup:
-    sprNumber = 5;
-    break;
-    
-    case spr_castleft:
-    sprNumber = 6;
-    break;
-    
-    case spr_castdown:
-    sprNumber = 7;
-    break;
-    
-    }
-    
-    
-
-//                       update coordinates and sprites
+//update coordinates
 buffer_seek(global.buffer, buffer_seek_start, 0);
 buffer_write(global.buffer, buffer_u8, 7);
 buffer_write(global.buffer, buffer_u32, global.playerId);
 buffer_write(global.buffer, buffer_f32, x);
 buffer_write(global.buffer, buffer_f32, y);
+<<<<<<< HEAD
 buffer_write(global.buffer, buffer_u8, sprNumber);
 buffer_write(global.buffer, buffer_u8, image_index);
 buffer_write(global.buffer, buffer_u8, abilCast);
 buffer_write(global.buffer, buffer_u8, facing);
+=======
+>>>>>>> parent of 15cf02c... Remote player player animation!
 network_send_packet(obj_controller.socket, global.buffer, buffer_tell(global.buffer));
-
-
-
-
-
 </string>
           </argument>
         </arguments>
