@@ -137,6 +137,9 @@ switch (msgId)
         var yy = buffer_read(buffer, buffer_f32);
         var sprNumber = buffer_read(buffer, buffer_u8);
         var imageIndex = buffer_read(buffer, buffer_u8);
+        var abilCast = buffer_read(buffer, buffer_u8);
+        var facing = buffer_read(buffer, buffer_u8);
+        
         
         //tell other players about this change
         for (var i = 0; i < ds_list_size(global.players);i++)
@@ -152,9 +155,11 @@ switch (msgId)
                 buffer_write(global.buffer, buffer_f32, yy);
                 buffer_write(global.buffer, buffer_u8, sprNumber);
                 buffer_write(global.buffer, buffer_u8, imageIndex);
+                 buffer_write(global.buffer, buffer_u8, abilCast);
+                buffer_write(global.buffer, buffer_u8, facing);
+          
                 network_send_packet(storedPlayerSocket, global.buffer, buffer_tell(global.buffer));
             }
         }
-    break;
-    
+        
 }

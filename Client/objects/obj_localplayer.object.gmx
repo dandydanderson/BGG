@@ -174,7 +174,11 @@ if (keyboard_check_pressed(vk_right))
 //                              casting animations
 //cast right
 
-if (keyboard_check_pressed(vk_numpad5) &amp;&amp; facing == 0)
+var abilUse = 0;
+var abilNum = 0;
+var abilCast = false;
+
+if (keyboard_check_pressed(vk_numpad5) &amp;&amp; facing == 0 &amp;&amp; mp &gt;= 3)
 {
   state = "casting"
    alarm[0] = 60;
@@ -182,11 +186,14 @@ if (keyboard_check_pressed(vk_numpad5) &amp;&amp; facing == 0)
    sprite_index = spr_castright;
    image_speed = .2;
    image_index = -1;
+   abilUse = abilUse + 1;
+   instance_create(obj_fireball, x + 32, y);
+
 }
 
 // casting upward
 
-if (keyboard_check_pressed(vk_numpad5) &amp;&amp; facing == 1)
+if (keyboard_check_pressed(vk_numpad5) &amp;&amp; facing == 1 &amp;&amp; mp &gt;= 3)
 {
   state = "casting"
    alarm[0] = 60;
@@ -194,11 +201,13 @@ if (keyboard_check_pressed(vk_numpad5) &amp;&amp; facing == 1)
   sprite_index = spr_castup;
   image_speed = .2;
   image_index = -1;
+  abilUse = abilUse + 1;
+  instance_create(obj_fireball, x, y-64);
 }
 
 // casting downward
 
-if (keyboard_check_pressed(vk_numpad5) &amp;&amp; facing == 3)
+if (keyboard_check_pressed(vk_numpad5) &amp;&amp; facing == 3 &amp;&amp; mp &gt;= 3)
 {
   state = "casting"
   alarm[0] = 60;
@@ -206,11 +215,13 @@ if (keyboard_check_pressed(vk_numpad5) &amp;&amp; facing == 3)
   sprite_index = spr_castdown;
   image_speed = .2;
   image_index = -1;
+  abilUse = abilUse + 1;
+  instance_create(obj_fireball, x - 32, y);
 }
 
 // casting left
 
-if (keyboard_check_pressed(vk_numpad5) &amp;&amp; facing == 2)
+if (keyboard_check_pressed(vk_numpad5) &amp;&amp; facing == 2 &amp;&amp; mp &gt;= 3)
 {
   state = "casting"
   alarm[0] = 60;
@@ -218,11 +229,24 @@ if (keyboard_check_pressed(vk_numpad5) &amp;&amp; facing == 2)
   sprite_index = spr_castleft;
   image_speed = .2;
   image_index = -1;
+  abilUse = abilUse + 1;
+  instance_create(obj_fireball, x, y + 64);
 }
 
 //casting control
 
 if (alarm[0] == -1 &amp;&amp; state == "casting") {state = "idle"}
+
+if (abilUse &gt; abilNum)
+    {
+    abilCast = 1;
+    abilNum += 1;
+    }
+    
+if (abilUse &lt;= abilNum)
+    {
+    abilCast = 0;
+    }
 
 
 
@@ -287,6 +311,8 @@ buffer_write(global.buffer, buffer_f32, x);
 buffer_write(global.buffer, buffer_f32, y);
 buffer_write(global.buffer, buffer_u8, sprNumber);
 buffer_write(global.buffer, buffer_u8, image_index);
+buffer_write(global.buffer, buffer_u8, abilCast);
+buffer_write(global.buffer, buffer_u8, facing);
 network_send_packet(obj_controller.socket, global.buffer, buffer_tell(global.buffer));
 
 

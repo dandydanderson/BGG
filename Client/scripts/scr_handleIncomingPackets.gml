@@ -94,6 +94,9 @@ switch(msgId)
         var yy = buffer_read(buffer, buffer_f32);
         var sprNumber = buffer_read(buffer, buffer_u8);
         var imageIndex = buffer_read(buffer, buffer_u8);
+       var abilCast = buffer_read(buffer, buffer_u8);
+        var facing = buffer_read(buffer, buffer_u8);
+        
         
         with (obj_remoteplayer)
         {
@@ -139,7 +142,90 @@ switch(msgId)
             
             image_index = imageIndex;
         }
+        
+         switch (facing)
+           {
+           case 0: 
+            if (abilCast == 1)
+                {
+                instance_create(obj_fireball, xx + 32, yy);
+                obj_fireball.direction = 0;
+                obj_fireball.image_angle = 0;
+                }
+           break;
+           
+           case 1: 
+            if (abilCast == 1)
+                {
+                instance_create(obj_fireball, xx, yy - 64);
+                obj_fireball.direction = 90;
+                obj_fireball.image_angle = 90;
+                }
+           break;
+           
+           case 2: 
+            if (abilCast == 1)
+                {
+                instance_create(obj_fireball, xx - 32, yy);
+                obj_fireball.direction = 180;
+                obj_fireball.image_angle = 180;
+                }
+           break;
+           
+           case 3: 
+            if (abilCast == 1)
+                {
+                instance_create(obj_fireball, xx, yy + 64);
+                obj_fireball.direction = 270;
+                obj_fireball.image_angle = 270;
+                }
+           break;
+           }
     break;
     
+    
 }
+
+
+    
+           switch (facing)
+           {
+           case 0: 
+            if (abilCast == 1)
+                {
+                instance_create(obj_fireball, xx + 32, yy);
+                obj_fireball.direction = 0;
+                obj_fireball.image_angle = 0;
+                }
+           break;
+           
+           case 1: 
+            if (abilCast == 1)
+                {
+                instance_create(obj_fireball, xx, yy - 64);
+                obj_fireball.direction = 90;
+                obj_fireball.image_angle = 90;
+                }
+           break;
+           
+           case 2: 
+            if (abilCast == 1)
+                {
+                instance_create(obj_fireball, xx - 32, yy);
+                obj_fireball.direction = 180;
+                obj_fireball.image_angle = 180;
+                }
+           break;
+           
+           case 3: 
+            if (abilCast == 1)
+                {
+                instance_create(obj_fireball, xx, yy + 64);
+                obj_fireball.direction = 270;
+                obj_fireball.image_angle = 270;
+                }
+           break;
+           }
+        
+    break;
 }
