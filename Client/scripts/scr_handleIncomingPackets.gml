@@ -93,11 +93,14 @@ switch(msgId)
         var xx = buffer_read(buffer, buffer_f32);
         var yy = buffer_read(buffer, buffer_f32);
 <<<<<<< HEAD
+<<<<<<< HEAD
         var sprNumber = buffer_read(buffer, buffer_u8);
         var imageIndex = buffer_read(buffer, buffer_u8);
        var abilCast = buffer_read(buffer, buffer_u8);
         var facing = buffer_read(buffer, buffer_u8);
         
+=======
+>>>>>>> parent of 15cf02c... Remote player player animation!
 =======
 >>>>>>> parent of 15cf02c... Remote player player animation!
         
@@ -150,6 +153,7 @@ switch(msgId)
            }
     break;
 <<<<<<< HEAD
+<<<<<<< HEAD
     
     
 }
@@ -196,6 +200,8 @@ switch(msgId)
            }
         
     break;
+=======
+>>>>>>> parent of 15cf02c... Remote player player animation!
 =======
 >>>>>>> parent of 15cf02c... Remote player player animation!
 }

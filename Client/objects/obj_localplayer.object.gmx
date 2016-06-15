@@ -261,10 +261,13 @@ buffer_write(global.buffer, buffer_u32, global.playerId);
 buffer_write(global.buffer, buffer_f32, x);
 buffer_write(global.buffer, buffer_f32, y);
 <<<<<<< HEAD
+<<<<<<< HEAD
 buffer_write(global.buffer, buffer_u8, sprNumber);
 buffer_write(global.buffer, buffer_u8, image_index);
 buffer_write(global.buffer, buffer_u8, abilCast);
 buffer_write(global.buffer, buffer_u8, facing);
+=======
+>>>>>>> parent of 15cf02c... Remote player player animation!
 =======
 >>>>>>> parent of 15cf02c... Remote player player animation!
 network_send_packet(obj_controller.socket, global.buffer, buffer_tell(global.buffer));

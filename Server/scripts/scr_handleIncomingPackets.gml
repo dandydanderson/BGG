@@ -136,11 +136,14 @@ switch (msgId)
         var xx = buffer_read(buffer, buffer_f32);
         var yy = buffer_read(buffer, buffer_f32);
 <<<<<<< HEAD
+<<<<<<< HEAD
         var sprNumber = buffer_read(buffer, buffer_u8);
         var imageIndex = buffer_read(buffer, buffer_u8);
         var abilCast = buffer_read(buffer, buffer_u8);
         var facing = buffer_read(buffer, buffer_u8);
         
+=======
+>>>>>>> parent of 15cf02c... Remote player player animation!
 =======
 >>>>>>> parent of 15cf02c... Remote player player animation!
         
@@ -157,6 +160,7 @@ switch (msgId)
                 buffer_write(global.buffer, buffer_f32, xx);
                 buffer_write(global.buffer, buffer_f32, yy);
 <<<<<<< HEAD
+<<<<<<< HEAD
                 buffer_write(global.buffer, buffer_u8, sprNumber);
                 buffer_write(global.buffer, buffer_u8, imageIndex);
                  buffer_write(global.buffer, buffer_u8, abilCast);
@@ -167,9 +171,14 @@ switch (msgId)
         }
         
 =======
+=======
+>>>>>>> parent of 15cf02c... Remote player player animation!
                 network_send_packet(storedPlayerSocket, global.buffer, buffer_tell(global.buffer));
             }
         }
     break;
+<<<<<<< HEAD
+>>>>>>> parent of 15cf02c... Remote player player animation!
+=======
 >>>>>>> parent of 15cf02c... Remote player player animation!
 }
