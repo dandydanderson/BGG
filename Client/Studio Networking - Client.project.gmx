@@ -18,6 +18,10 @@
       <sprite>sprites\spr_heroright</sprite>
       <sprite>sprites\spr_heroback</sprite>
       <sprite>sprites\spr_heroleft</sprite>
+      <sprite>sprites\spr_castdown</sprite>
+      <sprite>sprites\spr_castup</sprite>
+      <sprite>sprites\spr_castleft</sprite>
+      <sprite>sprites\spr_castright</sprite>
     </sprites>
     <sprites name="abilities">
       <sprite>sprites\spr_fireball</sprite>

@@ -38,6 +38,29 @@ mp = maxmp;
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>obj_localplayer.state = "idle";
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="2">
       <action>
         <libid>1</libid>
@@ -83,7 +106,7 @@ depth = -y;
 
 
 var xx, yy, d;
-// movement
+//                                object movement
 if (keyboard_check(vk_left) &amp;&amp; place_free(x - 9, y)) &amp;&amp; sprite_index = spr_heroleft {
 x -= 3;
 state = "movement"
@@ -104,9 +127,9 @@ if (keyboard_check(vk_down) &amp;&amp; place_free(x, y +10)) &amp;&amp; sprite_i
 y += 3;
 state = "movement"
 }
-if (x = xprevious &amp;&amp; y = yprevious) {state = "idle"}
+if (x = xprevious &amp;&amp; y = yprevious &amp;&amp; state == "movement") {state = "idle"}
 if (state = "idle") {image_index = 0;}
-//sprite control
+//                                   sprite control
 
 //downward movment
 if (keyboard_check_pressed(vk_down)) 
@@ -142,14 +165,66 @@ if (keyboard_check_pressed(vk_right))
 {sprite_index = spr_heroright;
  image_speed = .2;
  image_index = -1;
- facing = 3;
+ facing = 0;
  
 }
+//                              casting animations
+//cast right
+
+if (keyboard_check_pressed(vk_numpad5) &amp;&amp; facing == 0)
+{
+  state = "casting"
+   alarm[0] = 60;
+   image_speed = .2;
+   sprite_index = spr_castright;
+   image_speed = .2;
+   image_index = -1;
+}
+
+// casting upward
+
+if (keyboard_check_pressed(vk_numpad5) &amp;&amp; facing == 1)
+{
+  state = "casting"
+   alarm[0] = 60;
+  image_speed = .2;
+  sprite_index = spr_castup;
+  image_speed = .2;
+  image_index = -1;
+}
+
+// casting downward
+
+if (keyboard_check_pressed(vk_numpad5) &amp;&amp; facing == 3)
+{
+  state = "casting"
+  alarm[0] = 60;
+  image_speed = .2;
+  sprite_index = spr_castdown;
+  image_speed = .2;
+  image_index = -1;
+}
+
+// casting left
+
+if (keyboard_check_pressed(vk_numpad5) &amp;&amp; facing == 2)
+{
+  state = "casting"
+  alarm[0] = 60;
+  image_speed = .2;
+  sprite_index = spr_castleft;
+  image_speed = .2;
+  image_index = -1;
+}
+
+//casting control
+
+if (alarm[0] == -1 &amp;&amp; state == "casting") {state = "idle"}
 
 
 
 
-
+//                             death 
 if (hp &lt;= 0){
 hp = 0;
 x = xprevious;
